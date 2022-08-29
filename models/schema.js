@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 
 const studentSchema = new mongoose.Schema(
-  //   {
-  //   name: String,
-  //   age: Number
-  // }
   {
     studentName: String,
     studentRegistrationNumber: String,
@@ -21,15 +17,18 @@ const studentSchema = new mongoose.Schema(
     change: Boolean,
     scholarship: String,
     travelMode: String,
-    // address: {
-    //   doorNumber: '',
-    //   streetName: '',
-    //   city: '',
-    //   states: '',
-    //   countryList: '',
-    //   pinCode: ''
-    // }
+    address: addressSchema,
   }
 )
+const addressSchema = new mongoose.Schema({
+  doorNumber: String,
+  streetName: String,
+  city: String,
+  states: String,
+  countryList: String,
+  pinCode: String
+}, {
+  _id: false
+})
 
 module.exports = mongoose.model('StudentList', studentSchema)

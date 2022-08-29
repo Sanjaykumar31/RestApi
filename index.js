@@ -14,7 +14,7 @@ mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
 
 
 app.use((_, resp) => {
-  resp.send("Welcome to my API!")
+  resp.send("Welcome to My API!")
 })
 
 db.on('error', (error) => { console.error(error) })

@@ -38,7 +38,15 @@ router.post('/', async (req, res) => {
     checkList: req.body.checkList,
     change: req.body.change,
     scholarship: req.body.scholarship,
-    travelMode: req.body.travelMode
+    travelMode: req.body.travelMode,
+    address: {
+      doorNumber: req.body.doorNumber,
+      streetName: req.body.streetName,
+      city: req.body.city,
+      states: req.body.states,
+      countryList: req.body.countryList,
+      pinCode: req.body.pinCode
+    }
   })
   try {
     const studentData1 = await student.save()
@@ -50,8 +58,8 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', getstudent, async (req, res) => {
   try {
-    const studentData1 = await res.studentData.save({ new: true })
-    // const studentData1= await studentData.findByIdAndUpdate(req.params.id,req.body,{new:true})
+    // const studentData1 = await res.studentData.save(req.body, { new: true })
+    const studentData1 = await studentData.findByIdAndUpdate(req.params.id, req.body, { new: true })
     res.status(200).json(studentData1)
   } catch (err) {
     res.status(500).json({ message: err.message })
