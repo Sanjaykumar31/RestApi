@@ -4,7 +4,6 @@ const studentData = require('../models/schema')
 const validator = require('../validator')
 const middleware = require('../middleware')
 const checkId = require('../objectid')
-const duplicateId = require('../duplicatecheck')
 // const duplicatecheck = require('../duplicatecheck')
 
 
@@ -30,6 +29,24 @@ router.get('/:id', checkId, async (req, res) => {
 router.post('/', middleware(validator), async (req, res) => {
   // res.json({ message: req.body })
   const student = new studentData(req.body)
+  // const student = new studentData({
+  //   studentName: req.body.studentName,
+  //   studentRegistrationNumber: req.body.studentRegistrationNumber,
+  //   dateOfBirth: req.body.dateOfBirth,
+  //   phoneNumber: req.body.phoneNumber,
+  //   email: req.body.email,
+  //   gender: req.body.gender,
+  //   mediumOfStudy: req.body.mediumOfStudy,
+  //   fatherName: req.body.fatherName,
+  //   motherName: req.body.motherName,
+  //   homePhoneNumber: req.body.homePhoneNumber,
+  //   skills: req.body.skills,
+  //   checkList: req.body.checkList,
+  //   change: req.body.change,
+  //   scholarship: req.body.scholarship,
+  //   travelMode: req.body.travelMode,
+  //   address: req.body.address
+  // })
   try {
     const studentData1 = await student.save()
     res.status(200).json(studentData1)
