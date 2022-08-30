@@ -4,7 +4,8 @@ const studentData = require('../models/schema')
 const validator = require('../validator')
 const middleware = require('../middleware')
 const checkId = require('../objectid')
-
+const duplicateId = require('../duplicatecheck')
+// const duplicatecheck = require('../duplicatecheck')
 
 
 router.get('/', async (req, res) => {
