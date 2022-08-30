@@ -1,6 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const studentData = require('../models/schema')
+const validator = require('../validator')
+const middleware = require('../middleware')
+const checkId = require('../objectid')
+
 
 
 router.get('/', async (req, res) => {
@@ -13,7 +17,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', checkId, async (req, res) => {
   try {
     const studentData1 = await studentData.findById(req.params.id)
     res.json(studentData1)
@@ -22,7 +26,7 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', middleware(validator), async (req, res) => {
   // res.json({ message: req.body })
   const student = new studentData(req.body)
   try {
@@ -33,7 +37,7 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.patch('/:id', getstudent, async (req, res) => {
+router.patch('/:id', checkId, getstudent, async (req, res) => {
   try {
     // const studentData1 = await res.studentData.save(req.body, { new: true })
     const studentData1 = await studentData.findByIdAndUpdate(req.params.id, req.body, { new: true })
@@ -44,7 +48,7 @@ router.patch('/:id', getstudent, async (req, res) => {
 })
 
 
-router.delete('/:id', getstudent, async (req, res) => {
+router.delete('/:id', checkId, getstudent, async (req, res) => {
   try {
     await res.studentData.remove()
     //  await studentData.findByIdAndDelete(req.params.id)
