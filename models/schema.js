@@ -1,5 +1,16 @@
 const mongoose = require('mongoose')
 
+const addressSchema = new mongoose.Schema({
+  doorNumber: String,
+  streetName: String,
+  city: String,
+  states: String,
+  countryList: String,
+  pinCode: String
+}, {
+  _id: false
+})
+
 const studentSchema = new mongoose.Schema(
   {
     studentName: String,
@@ -20,15 +31,5 @@ const studentSchema = new mongoose.Schema(
     address: addressSchema,
   }
 )
-const addressSchema = new mongoose.Schema({
-  doorNumber: String,
-  streetName: String,
-  city: String,
-  states: String,
-  countryList: String,
-  pinCode: String
-}, {
-  _id: false
-})
 
 module.exports = mongoose.model('StudentList', studentSchema)

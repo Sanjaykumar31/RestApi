@@ -23,31 +23,8 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  const student = new studentData({
-    studentName: req.body.studentName,
-    studentRegistrationNumber: req.body.studentRegistrationNumber,
-    dateOfBirth: req.body.dateOfBirth,
-    phoneNumber: req.body.phoneNumber,
-    email: req.body.email,
-    gender: req.body.gender,
-    mediumOfStudy: req.body.mediumOfStudy,
-    fatherName: req.body.fatherName,
-    motherName: req.body.motherName,
-    homePhoneNumber: req.body.homePhoneNumber,
-    skills: req.body.skills,
-    checkList: req.body.checkList,
-    change: req.body.change,
-    scholarship: req.body.scholarship,
-    travelMode: req.body.travelMode,
-    address: {
-      doorNumber: req.body.doorNumber,
-      streetName: req.body.streetName,
-      city: req.body.city,
-      states: req.body.states,
-      countryList: req.body.countryList,
-      pinCode: req.body.pinCode
-    }
-  })
+  // res.json({ message: req.body })
+  const student = new studentData(req.body)
   try {
     const studentData1 = await student.save()
     res.status(200).json(studentData1)
