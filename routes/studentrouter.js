@@ -27,7 +27,6 @@ router.get('/:id', checkId, async (req, res) => {
 })
 
 router.post('/', middleware(validator), async (req, res) => {
-  // res.json({ message: req.body })
   const student = new studentData(req.body)
   // const student = new studentData({
   //   studentName: req.body.studentName,
