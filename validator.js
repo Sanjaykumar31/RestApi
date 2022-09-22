@@ -15,6 +15,7 @@ module.exports = joi.object({
   change: joi.boolean(),
   scholarship: joi.string(),
   travelMode: joi.string(),
+  fileList: joi.string(),
   address: {
     doorNumber: joi.string(),
     streetName: joi.string(),
