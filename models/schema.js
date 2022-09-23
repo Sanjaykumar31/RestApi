@@ -28,6 +28,7 @@ const studentSchema = new mongoose.Schema(
     change: Boolean,
     scholarship: String,
     travelMode: String,
+    fileList:String,
     address: addressSchema
   }
 )
