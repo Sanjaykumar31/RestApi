@@ -4,7 +4,7 @@ module.exports = joi.object({
   studentRegistrationNumber: joi.string(),
   dateOfBirth: joi.string(),
   phoneNumber: joi.string(),
-  // email: joi.string(),
+  email: joi.string(),
   gender: joi.string(),
   mediumOfStudy: joi.string(),
   fatherName: joi.string(),
