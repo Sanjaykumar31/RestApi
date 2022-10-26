@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000
 
 app.use(express.json())
 app.use(cors())
-app.use('/studentRouter', studentRouter)
+app.use('/studentrouter', studentRouter)
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
 
 
